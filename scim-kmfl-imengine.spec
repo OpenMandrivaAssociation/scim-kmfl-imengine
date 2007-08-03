@@ -1,52 +1,57 @@
-%define version	0.9
-%define release	%mkrel 2
+%define version		0.9.5
+%define release		%mkrel 1
 %define src_name	scim_kmfl_imengine
 
 %define scim_version	1.4.0
 %define libkmfl_version	0.5
 
-%define libname_orig lib%{name}
-%define libname %mklibname %{name} 0
+%define major		0
+%define libname_orig	lib%{name}
+%define libname		%mklibname %{name} %{major}
 
 Name:		scim-kmfl-imengine
-Summary:	Scim-kmfl-imengine is an SCIM IMEngine module for KMFL
-Version:		%{version}
-Release:		%{release}
+Summary:	Scim-kmfl-imengine is an SCIM IM engine module for KMFL
+Version:	%{version}
+Release:	%{release}
 Group:		System/Internationalization
-License:		GPL
-URL:			http://kmfl.sourceforge.net/
-Source0:		%{src_name}-%{version}.tar.bz2
+License:	GPL+
+URL:		http://kmfl.sourceforge.net/
+Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:			%{libname} = %{version}-%{release}
-Requires:			libkmfl >= %{libkmfl_version}
-Requires:			scim >= %{scim_version}
-BuildRequires:		libkmfl-devel >= %{libkmfl_version}
-BuildRequires:		scim-devel >= %{scim_version}
-BuildRequires:		automake1.8, libltdl-devel
-BuildRequires:		perl(XML::Parser)
-BuildRequires:          libxkbfile-devel 
+Requires:	%{libname} = %{version}-%{release}
+Requires:	libkmfl >= %{libkmfl_version}
+Requires:	scim >= %{scim_version}
+BuildRequires:	libkmfl-devel >= %{libkmfl_version}
+BuildRequires:	scim-devel >= %{scim_version}
+BuildRequires:	libltdl-devel
+BuildRequires:	perl(XML::Parser)
+BuildRequires:	libxkbfile-devel 
 
 %description
-Scim-kmfl-imengine is an SCIM IMEngine module for KMFL.
-Scim-kmfl-imengine needs binary Tavultesoft Keyman files 
-compiled by kmflcomp.
+KMFL is a keyboarding input method which aims to bring Tavultesoft
+Keyman functionality to Linux.
 
+scim-kmfl-imengine is one of three parts of the KMFL project. It is a 
+SCIM input method engine. The other two parts are libkmfl and
+kmflcomp.
 
 %package -n	%{libname}
 Summary:	Scim-kmfl-imengine library
 Group:		System/Internationalization
-Provides:		%{libname_orig} = %{version}-%{release}
+Provides:	%{libname_orig} = %{version}-%{release}
 
 %description -n %{libname}
-Scim-kmfl-imengine library.
+KMFL is a keyboarding input method which aims to bring Tavultesoft
+Keyman functionality to Linux.
 
+scim-kmfl-imengine is one of three parts of the KMFL project. It is a 
+SCIM input method engine. The other two parts are libkmfl and
+kmflcomp.
 
 %prep
 %setup -q -n %{src_name}-%{version}
-cp /usr/share/automake-1.9/mkinstalldirs .
 
 %build
-[[ ! -x configure ]] && ./bootstrap
 %configure2_5x
 %make
 
@@ -69,12 +74,8 @@ rm -rf $RPM_BUILD_ROOT
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-
 %files -n %{libname}
 %defattr(-,root,root)
-%doc COPYING 
+%doc AUTHORS ChangeLog
 %{_libdir}/scim-1.0/%{scim_version}/IMEngine/*
 %{_libdir}/scim-1.0/%{scim_version}/SetupUI/*
-
-
-
