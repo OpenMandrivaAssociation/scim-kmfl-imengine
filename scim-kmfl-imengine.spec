@@ -49,7 +49,7 @@ SCIM input method engine. The other two parts are libkmfl and
 kmflcomp.
 
 %prep
-%setup -q -n %{src_name}-%{version}
+%setup -q
 
 %build
 %configure2_5x
