@@ -1,4 +1,4 @@
-%define version		0.9.5
+%define version		0.9.6
 %define release		%mkrel 1
 %define src_name	scim_kmfl_imengine
 
@@ -14,7 +14,7 @@ Summary:	Scim-kmfl-imengine is an SCIM IM engine module for KMFL
 Version:	%{version}
 Release:	%{release}
 Group:		System/Internationalization
-License:	GPL+
+License:	GPLv2+
 URL:		http://kmfl.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
