@@ -79,3 +79,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog
 %{_libdir}/scim-1.0/%{scim_version}/IMEngine/*
 %{_libdir}/scim-1.0/%{scim_version}/SetupUI/*
+%{_datadir}/scim/kmfl/icons/default.png
