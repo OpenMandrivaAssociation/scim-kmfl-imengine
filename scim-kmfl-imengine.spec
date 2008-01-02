@@ -17,6 +17,7 @@ Group:		System/Internationalization
 License:	GPLv2+
 URL:		http://kmfl.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:	%{libname} = %{version}-%{release}
 Requires:	libkmfl >= %{libkmfl_version}
 Requires:	scim >= %{scim_version}
