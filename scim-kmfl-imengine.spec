@@ -10,7 +10,7 @@
 %define libname		%mklibname %{name} %{major}
 
 Name:		scim-kmfl-imengine
-Summary:	Scim-kmfl-imengine is an SCIM IM engine module for KMFL
+Summary:	SCIM IM engine module for KMFL
 Version:	%{version}
 Release:	%{release}
 Group:		System/Internationalization
