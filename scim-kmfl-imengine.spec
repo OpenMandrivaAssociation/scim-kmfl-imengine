@@ -1,5 +1,5 @@
 %define version		0.9.6
-%define release		%mkrel 1
+%define release		%mkrel 2
 %define src_name	scim_kmfl_imengine
 
 %define scim_version	1.4.0
