@@ -18,6 +18,7 @@ BuildRequires:	scim-devel >= %{scim_version}
 BuildRequires:	libltdl-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libxkbfile-devel 
+BuildRequires:	intltool
 Obsoletes:	%{mklibname scim-kmfl-imengine 0}
 
 %description
