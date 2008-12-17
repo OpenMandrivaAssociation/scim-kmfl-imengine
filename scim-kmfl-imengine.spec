@@ -1,45 +1,26 @@
-%define version		0.9.6
 %define src_name	scim_kmfl_imengine
 
 %define scim_version	1.4.0
-%define libkmfl_version	0.5
-
-%define major		0
-%define libname_orig	lib%{name}
-%define libname		%mklibname %{name} %{major}
+%define libkmfl_version	%{version}
 
 Name:		scim-kmfl-imengine
 Summary:	SCIM IM engine module for KMFL
-Version:	%{version}
-Release:	%mkrel 4
+Version:	0.9.7
+Release:	%mkrel 1
 Group:		System/Internationalization
 License:	GPLv2+
 URL:		http://kmfl.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:	%{libname} = %{version}-%{release}
-Requires:	libkmfl >= %{libkmfl_version}
 Requires:	scim >= %{scim_version}
 BuildRequires:	libkmfl-devel >= %{libkmfl_version}
 BuildRequires:	scim-devel >= %{scim_version}
 BuildRequires:	libltdl-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libxkbfile-devel 
+Obsoletes:	%{mklibname scim-kmfl-imengine 0}
 
 %description
-KMFL is a keyboarding input method which aims to bring Tavultesoft
-Keyman functionality to Linux.
-
-scim-kmfl-imengine is one of three parts of the KMFL project. It is a 
-SCIM input method engine. The other two parts are libkmfl and
-kmflcomp.
-
-%package -n	%{libname}
-Summary:	Scim-kmfl-imengine library
-Group:		System/Internationalization
-Provides:	%{libname_orig} = %{version}-%{release}
-
-%description -n %{libname}
 KMFL is a keyboarding input method which aims to bring Tavultesoft
 Keyman functionality to Linux.
 
@@ -55,7 +36,7 @@ kmflcomp.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 # remove unnecessary files
@@ -68,7 +49,7 @@ rm -rf %{buildroot}/%{_prefix}/doc/
 %find_lang %{name}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
@@ -77,9 +58,10 @@ rm -rf $RPM_BUILD_ROOT
 %postun -n %{libname} -p /sbin/ldconfig
 %endif
 
-%files -n %{libname}
+%files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
 %{_libdir}/scim-1.0/%{scim_version}/IMEngine/*
 %{_libdir}/scim-1.0/%{scim_version}/SetupUI/*
 %{_datadir}/scim/kmfl/icons/default.png
+
