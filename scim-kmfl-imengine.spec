@@ -11,6 +11,7 @@ Group:		System/Internationalization
 License:	GPLv2+
 URL:		http://kmfl.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
+Patch0:		scim-kmlf-imengine-0.9.7-gcc44.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:	scim >= %{scim_version}
 BuildRequires:	libkmfl-devel >= %{libkmfl_version}
@@ -31,6 +32,7 @@ kmflcomp.
 
 %prep
 %setup -q
+%patch0 -p1 -b .gcc44
 
 %build
 %configure2_5x
