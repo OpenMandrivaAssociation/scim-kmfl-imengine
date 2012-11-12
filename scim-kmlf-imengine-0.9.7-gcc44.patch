@@ -1,0 +1,12 @@
+Index: scim-kmfl-imengine-0.9.7/src/xkbmap.cpp
+===================================================================
+--- scim-kmfl-imengine-0.9.7/src/xkbmap.cpp
++++ scim-kmfl-imengine-0.9.7/src/xkbmap.cpp	2009-05-26 12:17:01.000000000 -0400
+@@ -2,6 +2,7 @@
+ #include <iostream>
+ #include <iomanip>
+ #include <list>
++#include <cstdio>
+ #include <X11/Xatom.h>
+ #include <X11/XKBlib.h>
+ #include <X11/extensions/XKM.h>
