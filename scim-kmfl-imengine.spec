@@ -14,6 +14,11 @@ Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
 Patch0:		scim-kmlf-imengine-0.9.7-gcc44.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:	scim >= %{scim_version}
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libkmfl-devel >= %{libkmfl_version}
 BuildRequires:	scim-devel >= %{scim_version}
 BuildRequires:	libltdl-devel
